@@ -1,13 +1,9 @@
 <script setup lang="ts">
-import BaseNav from "./components/BaseNav.vue";
 import { RouterView } from "vue-router";
 </script>
 
 <template>
-  <div
-    class="min-w-full min-h-screen bg-secondary text-grayish px-2 sm:px-[70px]"
-  >
-    <BaseNav />
+  <div class="min-w-full min-h-screen bg-background text-grayish px-2 py-4">
     <RouterView />
   </div>
 </template>

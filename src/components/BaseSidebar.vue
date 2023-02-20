@@ -2,27 +2,37 @@
 import { ref } from "vue";
 
 const sidebarLinks = ref([
-  { link: "Dishes", name: "dishes" },
+  { link: "Meals", name: "meals" },
   { link: "Restaurants", name: "restaurants" },
 ]);
 </script>
 
 <template>
-  <ul
-    class="flex flex-col gap-y-3 min-h-full min-w-[150px] mr-4 border-r border-white/10"
-  >
-    <li v-for="item in sidebarLinks" :key="item.name">
-      <RouterLink :to="item.name">{{ item.link }}</RouterLink>
-    </li>
-  </ul>
+  <nav class="flex flex-col h-full px-2">
+    <div class="bg-primary rounded-lg flex items-center justify-center py-2">
+      <RouterLink
+        :to="{ name: 'home' }"
+        class="text-2xl font-bold text-grayish tracking-wider"
+        >Logo</RouterLink
+      >
+    </div>
+    <ul
+      class="bg-primary rounded-lg h-full flex flex-col min-w-[180px] gap-y-1 mt-4 px-6 pt-3"
+    >
+      <li v-for="item in sidebarLinks" :key="item.name">
+        <RouterLink
+          :to="item.name"
+          class="py-2 pl-2 flex justify-start items-center rounded hover:text-pinky duration-150"
+          >{{ item.link }}</RouterLink
+        >
+      </li>
+    </ul>
+  </nav>
 </template>
 
 <style>
 .router-link-exact-active {
-  text-decoration: underline;
-  text-decoration-color: #08d9d6;
-  text-underline-offset: 4px;
-  color: #08d9d6;
-  transition: all ease 0.3s;
+  background-color: rgb(0 0 0 / 0.4);
+  color: #ff2e63;
 }
 </style>

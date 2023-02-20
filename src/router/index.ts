@@ -12,12 +12,12 @@ const router = createRouter({
         {
           path: '',
           name: 'home',
-          redirect: {name: 'dishes'}
+          redirect: {name: 'meals'}
         },
         {
-          path: 'dishes',
-          name: 'dishes',
-          component: () => import('../views/Home/Composites/Dishes.vue')
+          path: 'meals',
+          name: 'meals',
+          component: () => import('../views/Home/Composites/Meals.vue')
         },
         {
           path: 'restaurants',
@@ -26,17 +26,12 @@ const router = createRouter({
         }
       ]
     },
-    {
-      path: '/about',
-      name: 'about',
-      component: () => import('../views/AboutView.vue')
-    }
   ]
 })
 
 router.beforeEach((to, from) => {
   if(to === '/') {
-    return { name: 'dishes'}
+    return { name: 'meals'}
   }
 })
 
