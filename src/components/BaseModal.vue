@@ -30,7 +30,7 @@ const transition = computed((): boolean => {
     <Transition name="modal">
       <div
         v-show="transition"
-        class="rounded-lg p-2 bg-gradient-to-r bg-primary"
+        class="rounded-lg p-2 bg-gradient-to-r bg-primary w-[480px]"
       >
         <div class="flex justify-between items-center">
           <div></div>
@@ -40,7 +40,7 @@ const transition = computed((): boolean => {
               @click="useDeleteQuery(queryName)"
           /></i>
         </div>
-        <h1>Your file was succesfully uploaded.</h1>
+        <slot></slot>
       </div>
     </Transition>
   </div>

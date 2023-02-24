@@ -12,26 +12,36 @@ const router = createRouter({
         {
           path: '',
           name: 'home',
-          redirect: {name: 'meals'}
+          redirect: { name: 'meals' }
         },
         {
           path: 'meals',
           name: 'meals',
-          component: () => import('../views/Home/Composites/Meals.vue')
+          component: () => import('../views/Home/Composites/MealsView.vue')
         },
         {
           path: 'restaurants',
           name: 'restaurants',
-          component: () => import('../views/Home/Composites/Restaurants.vue')
+          component: () => import('../views/Home/Composites/RestaurantsView.vue')
         }
       ]
+    },
+    {
+      path: '/login',
+      name: 'login',
+      component: () => import('../views/auth/LoginView.vue')
+    },
+    {
+      path: '/register',
+      name: 'register',
+      component: () => import('../views/auth/RegisterView.vue')
     },
   ]
 })
 
-router.beforeEach((to, from) => {
-  if(to === '/') {
-    return { name: 'meals'}
+router.beforeEach((to) => {
+  if (to === '/') {
+    return { name: 'meals' }
   }
 })
 

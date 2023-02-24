@@ -14,7 +14,16 @@ defineProps({
 
 <template>
   <div class="bg-primary flex gap-x-3 rounded-lg py-2 px-2 min-w-[320px]">
-    <img src="../assets/logo.svg" class="w-[150px]" />
+    <img
+      v-if="item.type === 'rt'"
+      src="../assets/logo.svg"
+      class="w-[150px] rounded"
+    />
+    <img
+      v-else
+      :src="item.image"
+      class="w-[150px] h-[150px] object-cover rounded"
+    />
     <div class="flex flex-col">
       <h2 class="text-lg font-semibold">{{ item.title }}</h2>
       <p v-if="item.type === 'ml'" class="text-sm text-gray-300">
