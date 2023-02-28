@@ -8,15 +8,7 @@ const props = defineProps({
   optional: { type: Boolean, default: false },
 });
 
-const validateField = (value: string) => {
-  if (!value && !props.optional) {
-    return `${props.label} is reqiured`;
-  }
-
-  return true;
-};
-
-const { value, errorMessage, meta } = useField(props.name, validateField);
+const { value, errorMessage, meta } = useField(props.name);
 </script>
 
 <template>
@@ -29,7 +21,7 @@ const { value, errorMessage, meta } = useField(props.name, validateField);
       :id="name"
       :name="name"
       :type="type"
-      v-model="value"
+      v-model.trim="value"
       class="border-gray-700 bg-primary px-2 py-1 border w-full rounded outline-none mt-1"
       :class="{
         'border-red-700': errorMessage && meta.touched,

@@ -7,6 +7,7 @@ import BaseSelect from "@/components/BaseSelect.vue";
 import { useMealsStore } from "@/stores/meals";
 import { useForm } from "vee-validate";
 import { ref } from "vue";
+import { object, string } from "yup";
 
 const store = useMealsStore();
 const queryName = ref("newMeal");
@@ -17,7 +18,12 @@ const selectionList = [
   { label: "Recommended", value: "recommended" },
 ];
 
-const { handleSubmit, setValues } = useForm();
+const schema = object({
+  title: string().required("Title is required"),
+  status: string().required("Status is required"),
+});
+
+const { handleSubmit, setValues } = useForm({ validationSchema: schema });
 
 // sets default "choose option" for select field
 setValues({

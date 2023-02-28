@@ -16,6 +16,13 @@ const route = useRoute();
 const transition = computed((): boolean => {
   return !!route.query[props.queryName];
 });
+
+// close modal by pressing Esc
+document.addEventListener("keydown", (event) => {
+  if (event.key === "Escape") {
+    useDeleteQuery(props.queryName);
+  }
+});
 </script>
 
 <template>

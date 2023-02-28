@@ -22,15 +22,7 @@ const props = defineProps({
   },
 });
 
-const validateField = (value: string) => {
-  if (!value) {
-    return `${props.label} is reqiured`;
-  }
-
-  return true;
-};
-
-const { value, errorMessage, meta } = useField(props.name, validateField);
+const { value, errorMessage, meta } = useField(props.name);
 </script>
 
 <template>
