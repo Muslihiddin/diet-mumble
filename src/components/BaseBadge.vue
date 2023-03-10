@@ -9,7 +9,7 @@ defineProps({
 
 <template>
   <div
-    class="flex items-center justify-center pb-[2px] px-2 rounded-xl text-sm"
+    class="flex items-center justify-center pb-[2px] px-2 rounded-xl text-sm cursor-pointer"
     :class="{
       'bg-yellow-500/20 text-yellow-500': status === 'wanna try',
       'bg-green-500/20 text-green-500': status === 'recommended',

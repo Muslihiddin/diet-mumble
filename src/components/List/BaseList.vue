@@ -7,12 +7,11 @@ import ListItem from "./ListItem.vue";
 defineProps({
   list: {
     type: Array as PropType<Meal[] | Restaurant[]>,
-    required: true,
   },
 });
 </script>
 <template>
-  <ul class="grid grid-cols-3 gap-2">
+  <ul class="grid grid-cols-1 md:grid-cols-2 gap-2">
     <ListItem v-for="item in list" :key="item.id" :item="item" />
   </ul>
 </template>

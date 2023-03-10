@@ -17,12 +17,12 @@ const router = createRouter({
         {
           path: 'meals',
           name: 'meals',
-          component: () => import('../views/Home/Composites/MealsView.vue')
+          component: () => import('../views/home/Composites/MealsView.vue')
         },
         {
           path: 'restaurants',
           name: 'restaurants',
-          component: () => import('../views/Home/Composites/RestaurantsView.vue')
+          component: () => import('../views/home/Composites/RestaurantsView.vue')
         }
       ]
     },
@@ -36,6 +36,9 @@ const router = createRouter({
       name: 'register',
       component: () => import('../views/auth/RegisterView.vue')
     },
+    {
+      path: '/:pathMatch(.*)', component: () => import('../views/NotFound.vue')
+    }
   ]
 })
 

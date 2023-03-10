@@ -11,6 +11,7 @@
     "type-check": "vue-tsc --noEmit -p tsconfig.vitest.json --composite false"
   },
   "dependencies": {
+    "@iconify/vue": "^4.1.0",
     "firebase": "^9.17.1",
     "pinia": "^2.0.28",
     "vee-validate": "^4.7.4",

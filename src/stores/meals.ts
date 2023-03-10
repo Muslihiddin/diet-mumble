@@ -1,34 +1,32 @@
 import { defineStore } from 'pinia'
-import { reactive } from 'vue'
-import type { Meal } from '@/types/Meal'
+import { computed } from 'vue'
+import { useAuthStore } from './auth'
+import { db, auth } from '@/firebase/firebase'
+import { doc, updateDoc, arrayUnion } from "firebase/firestore";
+import type { Meal } from '@/types/Meal';
 
+const authStore = useAuthStore()
 export const useMealsStore = defineStore('meals', () => {
-  const meals = reactive<Meal[]>([
-    {
-      id: '01',
-      image: 'https://source.unsplash.com/random/150×151/?meal',
-      title: 'Meal one',
-      restaurant_title: 'Retaurant title',
-      status: 'wanna try',
-      type: 'ml'
-    },
-    {
-      id: '02',
-      image: 'https://source.unsplash.com/random/151×150/?meal',
-      title: 'Meal two',
-      restaurant_title: 'Retaurant title',
-      status: "not recommended",
-      type: 'ml'
-    },
-    {
-      id: '03',
-      image: 'https://source.unsplash.com/random/150×152/?meal',
-      title: 'Meal three',
-      restaurant_title: 'Retaurant title',
-      status: "recommended",
-      type: 'ml'
-    }
-  ])
 
-  return { meals }
+  const getMeals = computed(() => {
+    if (authStore.isLoggedin && authStore.gettingDocuments) {
+      return 'loading'
+    }
+    if (authStore.isLoggedin && !authStore.gettingDocuments) {
+      return authStore.meals
+    }
+  })
+
+  const setMeal = async (mealData: Meal) => {
+    try {
+      if (auth.currentUser) {
+        await updateDoc(doc(db, auth.currentUser.uid, 'meals'), { data: arrayUnion(mealData) })
+        authStore.meals.push(mealData)
+      }
+    } catch (e) {
+      console.log(e);
+    }
+  }
+
+  return { getMeals, setMeal }
 })
