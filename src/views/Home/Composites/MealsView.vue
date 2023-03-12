@@ -63,8 +63,9 @@ const onSubmit = handleSubmit(async (values, actions) => {
   <main class="pl-[210px] pt-1">
     <div class="flex items-center justify-between mb-3 bg-background">
       <h2 class="text-2xl font-bold tracking-wide">Meals</h2>
-      <AddNewBtn :query-name="queryName" />
+      <AddNewBtn :query-name="queryName" v-if="store.getMeals" />
     </div>
+
     <BaseList
       v-if="
         store.getMeals !== 'loading' &&
@@ -80,10 +81,17 @@ const onSubmit = handleSubmit(async (values, actions) => {
       <Spinner />
     </div>
     <p
-      v-if="store.getMeals !== 'loading' && store.getMeals?.length == 0"
+      v-if="
+        store.getMeals &&
+        store.getMeals !== 'loading' &&
+        store.getMeals?.length == 0
+      "
       class="text-center"
     >
       There is no meals yet. Add one by clicking "New" button 🙂
+    </p>
+    <p v-if="!store.getMeals">
+      In order to see your meals you to sign in first
     </p>
   </main>
 

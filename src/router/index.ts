@@ -12,7 +12,12 @@ const router = createRouter({
         {
           path: '',
           name: 'home',
-          redirect: { name: 'meals' }
+          redirect: { name: 'intro' }
+        },
+        {
+          path: 'intro',
+          name: 'intro',
+          component: () => import('../views/home/Composites/IntroView.vue')
         },
         {
           path: 'meals',

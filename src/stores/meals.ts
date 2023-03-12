@@ -9,6 +9,9 @@ const authStore = useAuthStore()
 export const useMealsStore = defineStore('meals', () => {
 
   const getMeals = computed(() => {
+    if (!authStore.isLoggedin) {
+      return false
+    }
     if (authStore.isLoggedin && authStore.gettingDocuments) {
       return 'loading'
     }

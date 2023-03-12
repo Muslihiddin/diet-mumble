@@ -2,6 +2,7 @@
 import { ref } from "vue";
 
 const sidebarLinks = ref([
+  { link: "Intro", name: "intro" },
   { link: "Meals", name: "meals" },
   { link: "Restaurants", name: "restaurants" },
 ]);

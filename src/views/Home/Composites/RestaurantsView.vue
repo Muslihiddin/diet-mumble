@@ -62,7 +62,7 @@ const onSubmit = handleSubmit(async (values, actions) => {
   <main class="pl-[210px] pt-1">
     <div class="flex items-center justify-between mb-3">
       <h2 class="text-2xl font-bold tracking-wide">Restaurants</h2>
-      <AddNewBtn :query-name="queryName" />
+      <AddNewBtn :query-name="queryName" v-if="store.getRestaurants" />
     </div>
     <BaseList
       v-if="
@@ -80,11 +80,16 @@ const onSubmit = handleSubmit(async (values, actions) => {
     </div>
     <p
       v-if="
-        store.getRestaurants !== 'loading' && store.getRestaurants?.length == 0
+        store.getRestaurants &&
+        store.getRestaurants !== 'loading' &&
+        store.getRestaurants?.length == 0
       "
       class="text-center"
     >
       There is no restaurants yet. Add one by clicking "New" button 🙂
+    </p>
+    <p v-if="!store.getRestaurants">
+      In order to see your restaurants you to sign in first
     </p>
   </main>
 
