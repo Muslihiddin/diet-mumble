@@ -60,8 +60,8 @@ const onSubmit = handleSubmit(async (values, actions) => {
 </script>
 
 <template>
-  <main>
-    <div class="flex items-center justify-between mb-3">
+  <main class="pl-[210px] pt-1">
+    <div class="flex items-center justify-between mb-3 bg-background">
       <h2 class="text-2xl font-bold tracking-wide">Meals</h2>
       <AddNewBtn :query-name="queryName" />
     </div>

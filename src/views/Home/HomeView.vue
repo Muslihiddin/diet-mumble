@@ -4,11 +4,7 @@ import BaseTopbar from "@/components/BaseTopbar.vue";
 </script>
 
 <template>
-  <main class="flex items-start h-95-vh">
-    <BaseSidebar />
-    <div class="w-full">
-      <BaseTopbar />
-      <RouterView />
-    </div>
-  </main>
+  <BaseSidebar />
+  <BaseTopbar />
+  <RouterView />
 </template>

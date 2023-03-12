@@ -8,7 +8,7 @@ const sidebarLinks = ref([
 </script>
 
 <template>
-  <nav class="flex flex-col h-full px-2">
+  <nav class="fixed top-4 z-10 max-w-[210px] h-[95vh] flex flex-col px-2">
     <div class="bg-primary rounded-lg flex items-center justify-center py-2">
       <RouterLink
         :to="{ name: 'home' }"

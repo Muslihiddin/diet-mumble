@@ -59,7 +59,7 @@ const onSubmit = handleSubmit(async (values, actions) => {
 </script>
 
 <template>
-  <main>
+  <main class="pl-[210px] pt-1">
     <div class="flex items-center justify-between mb-3">
       <h2 class="text-2xl font-bold tracking-wide">Restaurants</h2>
       <AddNewBtn :query-name="queryName" />
